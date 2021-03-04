@@ -38,7 +38,7 @@
 } */
 
 body {
-  background: blue;
+  /* background: blue; */
 }
 
 .headerImg{
@@ -60,4 +60,14 @@ body {
 color: white;
 /* border: solid white 3px; */
 text-shadow: 0px 0px 2px black;
+}
+
+.plantDetailImg{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 400px;
+  width: 80%;
+  object-fit: cover;
 }
