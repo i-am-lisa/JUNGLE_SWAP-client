@@ -11,7 +11,7 @@ class Home extends Component {
 
         return (
             <div>
-            <header class="headerImg">
+            <header className="headerImg">
             <div><h1>JungleSwap</h1></div>
             </header>
                 <h3>Welcome Home</h3>
@@ -20,11 +20,10 @@ class Home extends Component {
                 <h4>All Plants</h4>
                 {
                     plants.map((plant) => {
+                        console.log("Plant" + plant)
                     return <div key={plant._id}>
-                                <Link ><img src={plant.image} alt={plant.name} /></Link>
+                                <Link to={`/plants/${plant._id}`}><img src={plant.image} alt={plant.name} /></Link>
                                 <div >{plant.name} </div>
-                                <div >{plant.description} </div>
-                                <div >{plant.location} </div>
                             </div>
                     
                     })

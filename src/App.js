@@ -9,6 +9,9 @@ import axios from 'axios';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
 import AddForm from './components/AddForm';
+import EditForm from './components/EditForm';
+import PlantDetail from './components/PlantDetail'
+
 
 
 class App extends Component {
@@ -23,11 +26,11 @@ class App extends Component {
    componentDidMount(){
     axios.get(`${config.API_URL}/api/plants`)
       .then((response) => {
-        console.log('didmonut' + response.data)
+        // console.log('didmonut' + response.data)
         this.setState({ plants: response.data})
       })
-      .catch(() => {
-        console.log('Fetching failed')
+      .catch((err) => {
+        console.log('Fetching failed', err)
       })
 
     if (!this.state.loggedInUser) {
@@ -42,7 +45,122 @@ class App extends Component {
         })
     }  
   }
+
+  //------------Add Form------------------
+
+handleSubmit = (event) => {
+  event.preventDefault()
+  let name = event.target.name.value
+  let description = event.target.description.value
+  let size = event.target.size.value
+  let image = event.target.plantImage.files[0]
+  let location = event.target.location.value
+  // console.log(image)
+
+  let uploadForm = new FormData()
+  uploadForm.append('imageUrl', image)
+
+  axios.post(`${config.API_URL}/api/upload`, uploadForm)
+    .then((response) => {
+      //1. Make an API call to the server side Route to create a new plant
+      const newPlant = {
+        name: name,
+        description: description,
+        size: size,
+        image: response.data.image,
+        location: location,
+      }
+      // console.log("newPlant" + newPlant)
+
+          axios.post(`${config.API_URL}/api/plants/create`, newPlant, {withCredentials: true})
+            .then((response) => {
+                // 2. Once the server has successfully created a new plant, update your state that is visible to the user
+                this.setState({
+                  plants: [response.data, ...this.state.plants]
+                }, () => {
+                  //3. Once the state is update, redirect the user to the home page
+                  this.props.history.push('/')
+                })
+
+    })
+    .catch((err) => {
+      console.log('Create failed', err)
+    })
+
+    })
+
+    .catch(() => {
+      
+    })
+
+
+  
+}
+
+
+  //------------Edit Form------------------
+
+handleEditPlant = (plant) => {
+  axios.patch(`${config.API_URL}/api/plants/${plant._id}`, {
+    name: plant.name,
+    description: plant.description,
+    size: plant.size,
+    image: plant.image,
+    location: plant.location,
+  })
+    .then(() => {
+        let newPlants = this.state.plants.map((singlePlant) => {
+            if (plant._id === singlePlant._id) {
+              singlePlant.name  = plant.name
+              singlePlant.description = plant.description
+              singlePlant.size = plant.size
+              singlePlant.image = plant.image
+              singlePlant.location = plant.location
+            }
+            return singlePlant
+        })
+        this.setState({
+          plants: newPlants
+        }, () => {
+          this.props.history.push('/')
+        })
+
+        
+    })
+    .catch((err) => {
+      console.log('Edit failed', err)
+    })
+
+}
+
+ //--------------Delete Plant------------------
+
+
+ handleDelete = (plantId) => {
+
+  //1. Make an API call to the server side Route to delete that specific plant
+    axios.delete(`${config.API_URL}/api/plants/${plantId}`)
+      .then(() => {
+         // 2. Once the server has successfully created a new plant, update your state that is visible to the user
+          let filteredPlants = this.state.plants.filter((plant) => {
+            return plant._id !== plantId
+          })
+
+          this.setState({
+            plants: filteredPlants
+          }, () => {
+            this.props.history.push('/')
+          })
+      })
+      .catch((err) => {
+        console.log('Delete failed', err)
+      })
+
+ }
+
 // --------- Authentication------------
+
+
   handleSignUp = (event) => {
     event.preventDefault()
     let user = {
@@ -99,51 +217,7 @@ class App extends Component {
 
  }
 
-//------------Add Form------------------
 
-handleSubmit = (event) => {
-  event.preventDefault()
-  let name = event.target.name.value
-  let description = event.target.description.value
-  let image = event.target.plantImage.files[0]
-  let location = event.target.location.value
-  console.log(image)
-
-  let uploadForm = new FormData()
-  uploadForm.append('imageUrl', image)
-
-  axios.post(`${config.API_URL}/api/upload`, uploadForm)
-    .then((response) => {
-      //1. Make an API call to the server side Route to create a new plant
-          axios.post(`${config.API_URL}/api/plants/create`, {
-            name: name,
-            description: description,
-            image: response.data.image,
-            location: location,
-          })
-            .then((response) => {
-                // 2. Once the server has successfully created a new plant, update your state that is visible to the user
-                this.setState({
-                  plants: [response.data, ...this.state.plants]
-                }, () => {
-                  //3. Once the state is update, redirect the user to the home page
-                  this.props.history.push('/')
-                })
-
-    })
-    .catch((err) => {
-      console.log('Create failed', err)
-    })
-
-    })
-
-    .catch(() => {
-      
-    })
-
-
-  
-}
 
 //--------------Render------------------
 
@@ -158,6 +232,9 @@ handleSubmit = (event) => {
             <Route exact path="/" render={() => {
                 return <Home plants={plants}/>
             }} />   
+            <Route  path="/plants/:plantId" render={(routeProps) => {
+                return <PlantDetail  user={loggedInUser} onDelete={this.handleDelete} {...routeProps} />
+            }} />
             <Route  path="/signin"  render={(routeProps) => {
               return  <SignIn onSignIn={this.handleSignIn} {...routeProps}  />
             }}/>
@@ -166,6 +243,9 @@ handleSubmit = (event) => {
             }}/>
             <Route path="/add-form" render={() => {
                 return <AddForm user={loggedInUser} onAdd={this.handleSubmit} />
+            }} />
+             <Route  path="/plant/:plantId/edit" render={(routeProps) => {
+                return <EditForm onEdit={this.handleEditPlant} {...routeProps}/>
             }} />
         </Switch>
         

@@ -14,6 +14,8 @@ class AddForm extends Component {
       <form onSubmit={this.props.onAdd}>
         <input name="name" type="text" placeholder="Enter name"/>
         <input name="description" type="text" placeholder="Enter desc"/>
+        <input name="size" type="number" min="1" placeholder="size in cm"/>cm
+
         <select name="location" type="text" placeholder="Select">
             <option>Select location</option>
             <option value="sunny">Sunny</option>
