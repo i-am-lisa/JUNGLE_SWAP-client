@@ -1,30 +1,30 @@
 import React from  'react'
 import {Navbar, Nav} from  'react-bootstrap'
 import {Link} from  'react-router-dom'
-// import { HashLink as Link } from 'react-router-hash-link';
 
 function NavBar (props) {
   return (
-    <Navbar  bg="light"  expand="lg">
-      <Navbar.Toggle  aria-controls="basic-navbar-nav"  />
-      <Navbar.Collapse  id="basic-navbar-nav">
-        <Nav  className="mr-auto">
-          <Link  to="/">JungleSwap</Link>
-          <Link  to="/#allPlants">All Plants</Link>
-          <Link  style={{marginLeft: '10px'}}  to="/add-form">Add Plant</Link>
-          {
-            props.user ? (
-              <button onClick={props.onLogout}>Logout</button>
-            ) : (
-              <>
-                <Link  style={{marginLeft: '10px'}}  to="/signin">SignIn</Link>
-                <Link  style={{marginLeft: '10px'}}  to="/signup">SignUp</Link>
-              </>
-            )
-          }
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <>
+      <Navbar bg="light"  expand="lg">
+      <Navbar.Brand href="/">JungleSwap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav"  />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav  className="mr-auto">
+            <Link className="p-2" to="/add-form"> Add Plant </Link>
+            {
+              props.user ? (
+                <Link className="p-2" to="/logout"> LogOut </Link>
+              ) : (
+                <>
+                  <Link className="p-2" to="/signin"> SignIn </Link>
+                  <Link className="p-2" to="/signup"> SignUp </Link>
+                </>
+              )
+            }
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>  
+    </>
     )
-}
-export default NavBar
+  }
+  export default NavBar

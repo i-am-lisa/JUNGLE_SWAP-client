@@ -12,7 +12,7 @@ import AddForm from './components/AddForm';
 import EditForm from './components/EditForm';
 import PlantDetail from './components/PlantDetail'
 import CheckoutPage from './components/CheckoutPage'
-import Search from './components/Search';
+import LogOut from './components/LogOut';
 
 
 
@@ -74,14 +74,6 @@ class App extends Component {
     })
     
   }
-
-  //  // method for the search filter functionality. Invoked in Search.
-  // filterPlants = (input) => {
-  //   const filtered = this.state.plants.filter((el) =>
-  //     el.name.toLowerCase().includes(input.toLowerCase())
-  //   );
-  //   this.setState({ filtered });
-  // };
 
   //------------Add Form------------------
 
@@ -241,7 +233,7 @@ handleEditPlant = (plant) => {
     })
  }
 
- handleLogout = () => {
+ handleLogOut = () => {
   
   axios.post(`${config.API_URL}/api/logout`, {}, {withCredentials: true})
   .then(() => {
@@ -277,7 +269,7 @@ handleEditPlant = (plant) => {
     console.log('Query: ', query)
     return (
       <div>
-        <NavBar onLogout={this.handleLogout} user={loggedInUser}/>
+        <NavBar onLogOut={this.handleLogOut} user={loggedInUser}/>
        <Switch>
             <Route exact path="/" render={() => {
                 return <Home plants={plants} query={query} onSearch={this.handleChange}/>
@@ -300,6 +292,9 @@ handleEditPlant = (plant) => {
             <Route  path="/plant/:plantId/checkout" render={(routeProps) => {
                 return <CheckoutPage onCheckout={this.handleCheckout} {...routeProps}/>
             }} />
+            <Route  path="/logout"  render={(routeProps) => {
+              return  <LogOut onLogOut={this.handleLogOut} {...routeProps}  />
+            }}/>
         </Switch>
         
       </div>
