@@ -11,6 +11,9 @@ import NavBar from './components/NavBar';
 import AddForm from './components/AddForm';
 import EditForm from './components/EditForm';
 import PlantDetail from './components/PlantDetail'
+import CheckoutPage from './components/CheckoutPage'
+import LogOut from './components/LogOut';
+
 
 
 
@@ -19,19 +22,13 @@ class App extends Component {
   state = {
     loggedInUser: null,
     error: null,
-    plants: []
+    plants: [],
+    query: ""
   }
 
    // Make sure all the initial data that you show to the user is fetched here
    componentDidMount(){
-    axios.get(`${config.API_URL}/api/plants`)
-      .then((response) => {
-        // console.log('didmonut' + response.data)
-        this.setState({ plants: response.data})
-      })
-      .catch((err) => {
-        console.log('Fetching failed', err)
-      })
+    this.fetchAllPlants()
 
     if (!this.state.loggedInUser) {
       axios.get(`${config.API_URL}/api/user`, {withCredentials: true})
@@ -44,6 +41,38 @@ class App extends Component {
 
         })
     }  
+  }
+
+  fetchAllPlants = () => {
+    axios.get(`${config.API_URL}/api/plants`)
+      .then((response) => {
+        this.setState({ plants: response.data})
+      })
+      .catch((err) => {
+        console.log('Fetching failed', err)
+      })
+  }
+
+  fetchQueryPlants = () => {
+    console.log('fetchQueryPlants', this.state.query)
+    console.log("running")
+    axios
+      .get(`${config.API_URL}/api/plants/search?q=${this.state.query}`)
+      .then((response) => {
+        this.setState({
+          plants: response.data,
+          ready: true
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+
+  handleChange = (e) => {
+    const query = e.target.value
+    this.setState({ query }, () => {
+      query ? this.fetchQueryPlants() : this.fetchAllPlants()
+    })
+    
   }
 
   //------------Add Form------------------
@@ -204,9 +233,22 @@ handleEditPlant = (plant) => {
     })
  }
 
- handleLogout = () => {
+ handleLogOut = () => {
   
   axios.post(`${config.API_URL}/api/logout`, {}, {withCredentials: true})
+  .then(() => {
+      this.setState({
+        loggedInUser: null
+      }, () => {
+        this.props.history.push('/')
+      })
+  })
+
+ }
+
+ handleCheckout = () => {
+  
+  axios.post(`${config.API_URL}/api/create-payment-intent`, {}, {withCredentials: true})
   .then(() => {
       this.setState({
         loggedInUser: null
@@ -223,14 +265,14 @@ handleEditPlant = (plant) => {
 
   render() {
 
-    const {plants, loggedInUser, error} = this.state
-
+    const {plants, loggedInUser, error, query} = this.state
+    console.log('Query: ', query)
     return (
       <div>
-        <NavBar onLogout={this.handleLogout} user={loggedInUser}/>
+        <NavBar onLogOut={this.handleLogOut} user={loggedInUser}/>
        <Switch>
             <Route exact path="/" render={() => {
-                return <Home plants={plants}/>
+                return <Home plants={plants} query={query} onSearch={this.handleChange}/>
             }} />   
             <Route  path="/plants/:plantId" render={(routeProps) => {
                 return <PlantDetail  user={loggedInUser} onDelete={this.handleDelete} {...routeProps} />
@@ -247,6 +289,12 @@ handleEditPlant = (plant) => {
              <Route  path="/plant/:plantId/edit" render={(routeProps) => {
                 return <EditForm onEdit={this.handleEditPlant} {...routeProps}/>
             }} />
+            <Route  path="/plant/:plantId/checkout" render={(routeProps) => {
+                return <CheckoutPage onCheckout={this.handleCheckout} {...routeProps}/>
+            }} />
+            <Route  path="/logout"  render={(routeProps) => {
+              return  <LogOut onLogOut={this.handleLogOut} {...routeProps}  />
+            }}/>
         </Switch>
         
       </div>
