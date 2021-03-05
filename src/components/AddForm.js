@@ -18,9 +18,9 @@ class AddForm extends Component {
 
         <select name="location" type="text" placeholder="Select">
             <option>Select location</option>
-            <option value="sunny">Sunny</option>
-            <option value="shade">Shade</option>
-            <option value="n/a">Does not care</option>
+            <option value="sun">sun</option>
+            <option value="shade">shade</option>
+            <option value="sun and shade">sun and shade</option>
         </select>
 
         <input name="plantImage" type="file"/>

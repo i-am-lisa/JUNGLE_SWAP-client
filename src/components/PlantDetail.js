@@ -3,6 +3,7 @@ import React, { Component, createRef } from 'react'
 import config from '../config'
 import {Link, Redirect} from 'react-router-dom'
 
+
 export default class PlantDetail extends Component {
 
   state = {
@@ -27,11 +28,11 @@ export default class PlantDetail extends Component {
     const {onDelete, user} = this.props
     console.log(this.props)
 
+
     if(!user){
       return <Redirect to={'/signin'}/>
     }
 
-    console.log('---', user, plant)
 
     return (
       <div>
@@ -56,11 +57,14 @@ export default class PlantDetail extends Component {
               <button onClick={() => { onDelete(plant._id)  } }>Delete</button>
               </>
             ) : <>
+                <Link to={`/plant/${plant._id}/checkout`}>
                   <button>Buy</button>
+                </Link>
                   <button>Swap</button>
               </>
         }
-
+          
+          <Link to={'/'}>go back</Link>
         
       </div>
     )

@@ -85,9 +85,9 @@ export default class EditForm extends Component {
           <input type="text" onChange={this.handleDescChange} value={plant.description}/>
           <input type="number" onChange={this.handleSizeChange} value={plant.size}/>
         <select onChange={this.handleLocationChange} name="location" type="text" placeholder="Select">
-            <option value="Sun">Sun</option>
-            <option value="Shade">Shade</option>
-            <option value="Sun and Shade">Sun and Shade</option>
+            <option value="sun">sun</option>
+            <option value="shade">shade</option>
+            <option value="sun and shade">sun and shade</option>
         </select>
           <input onChange={this.handleImageChange} type="text"  value={plant.image}/>
           <button onClick={ () => { onEdit(plant) } }  >Submit</button>

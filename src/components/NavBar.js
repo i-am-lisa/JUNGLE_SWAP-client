@@ -1,6 +1,7 @@
 import React from  'react'
 import {Navbar, Nav} from  'react-bootstrap'
 import {Link} from  'react-router-dom'
+// import { HashLink as Link } from 'react-router-hash-link';
 
 function NavBar (props) {
   return (
@@ -9,6 +10,7 @@ function NavBar (props) {
       <Navbar.Collapse  id="basic-navbar-nav">
         <Nav  className="mr-auto">
           <Link  to="/">JungleSwap</Link>
+          <Link  to="/#allPlants">All Plants</Link>
           <Link  style={{marginLeft: '10px'}}  to="/add-form">Add Plant</Link>
           {
             props.user ? (
