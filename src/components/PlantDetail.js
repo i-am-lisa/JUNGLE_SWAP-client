@@ -64,7 +64,7 @@ export default class PlantDetail extends Component {
               </>
         }
           
-          <Link to={'/'}>go back</Link>
+          <Link to={`/`}>go back</Link>
         
       </div>
     )

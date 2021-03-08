@@ -1,6 +1,9 @@
 import React from  'react'
 import {Navbar, Nav} from  'react-bootstrap'
 import {Link} from  'react-router-dom'
+import { ScrollTo } from "react-scroll-to";
+
+
 
 function NavBar (props) {
   return (
@@ -10,14 +13,22 @@ function NavBar (props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav"  />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav  className="mr-auto">
+          
             <Link className="p-2" to="/add-form"> Add Plant </Link>
             {
+                    <ScrollTo >
+                        {({ scroll }) => (
+                        <Link className="p-2" onClick={() => scroll({y: 1100, smooth: true})}>All Plants</Link>
+                        )}
+                    </ScrollTo>
+                }
+            {
               props.user ? (
-                <Link className="p-2" to="/logout"> LogOut </Link>
+                <Link className="p-2" to="/logout"> Log out </Link>
               ) : (
                 <>
-                  <Link className="p-2" to="/signin"> SignIn </Link>
-                  <Link className="p-2" to="/signup"> SignUp </Link>
+                  <Link className="p-2" to="/signin"> Sign in </Link>
+                  <Link className="p-2" to="/signup"> Sign up </Link>
                 </>
               )
             }

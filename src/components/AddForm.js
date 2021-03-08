@@ -8,7 +8,7 @@ class AddForm extends Component {
     const {user} = this.props
 
     if(!user){
-      return <Redirect to={'/signin'}/>
+      return <Redirect to={'/signup'}/>
     }
     return (
       <form onSubmit={this.props.onAdd}>

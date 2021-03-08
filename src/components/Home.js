@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Search from './Search'
+import Chatbot from './Chatbot'
+
 
 class Home extends Component {
 
@@ -15,13 +16,23 @@ class Home extends Component {
             <div><h1>JungleSwap</h1></div>
             </header>
                 <h3>Welcome Home</h3>
+                <Chatbot/>
+               
                 
                 {/* <AllPlants plants={plants}/> */}
                 
 
                 <h4>All Plants</h4>
-                <label>Search for Plants</label>
-                <input type="text" value={query} onChange={this.props.onSearch}/>                
+                <h3>Search for Plants</h3>
+                <label>Name:</label>
+                <input type="text" value={query} onChange={this.props.onSearch}/> 
+                <label>Location:</label>
+                <select name="location" type="text" placeholder="Select">
+                    <option>Select location</option>
+                    <option value="sun">sun</option>
+                    <option value="shade">shade</option>
+                    <option value="sun and shade">sun and shade</option>
+                </select>               
                 {
                     plants.map((plant) => {
                     return <div key={plant._id}>

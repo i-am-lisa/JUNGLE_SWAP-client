@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
+
 
 function SignUp(props){
 
@@ -23,7 +25,10 @@ function SignUp(props){
                 ) : null
             }
             <button type="submit" className="btn btn-primary">Submit</button>
+            <p>Already have an account?</p>
+            <Link to={'/signin'}>Sign in</Link>
         </form>
+        
     )
 }
 

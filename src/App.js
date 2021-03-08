@@ -13,6 +13,8 @@ import EditForm from './components/EditForm';
 import PlantDetail from './components/PlantDetail'
 import CheckoutPage from './components/CheckoutPage'
 import LogOut from './components/LogOut';
+import { browserHistory } from 'react-router';
+
 
 
 

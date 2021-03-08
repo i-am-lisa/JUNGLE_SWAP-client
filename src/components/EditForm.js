@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import config from '../config'
+// import browserHistory from 'react-router/lib/browserHistory'
 
 export default class EditForm extends Component {
 
@@ -20,6 +21,12 @@ export default class EditForm extends Component {
         console.log('Detail fetch failed')
       })
   }
+
+
+//  handelGoBack = () => {
+//   // this DOES NOT work, only URL pathname is updated correctly.
+//   browserHistory.push('/my/path/name');
+// }
 
   handleNameChange = (event) => {
     let text = event.target.value
@@ -75,12 +82,18 @@ export default class EditForm extends Component {
           })
     }
 
+    // goBack() {
+    //   window.history.go(-2);
+    // }
+
   render() {
     const {plant} = this.state
     const {onEdit} = this.props
+    
 
     return (
       <div>
+          {/* <button onClick={handleGoBack}>Go back</button>           */}
           <input type="text" onChange={this.handleNameChange} value={plant.name}/>
           <input type="text" onChange={this.handleDescChange} value={plant.description}/>
           <input type="number" onChange={this.handleSizeChange} value={plant.size}/>
