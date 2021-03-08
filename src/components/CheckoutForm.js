@@ -123,7 +123,7 @@ function CheckoutForm(props) {
         </p>
       </form>
       <div className="row justify-content-center mt-4">
-        <Link to={ "/" }> <button className="btn btn-sm"> Go back </button> </Link>
+        <Link to={ `/` }> <button className="btn btn-sm"> Go back </button> </Link>
       </div>
     </div>
   );

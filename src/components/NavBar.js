@@ -6,6 +6,8 @@ import { ScrollTo } from "react-scroll-to";
 
 
 function NavBar (props) {
+  const myRef = React.createRef();
+
   return (
     <>
       <Navbar  className="pl-5" variant="dark" expand="lg" fixed="top">
@@ -18,7 +20,7 @@ function NavBar (props) {
             {
                     <ScrollTo >
                         {({ scroll }) => (
-                        <Link className="p-2" onClick={() => scroll({y: 820, smooth: true})}>All Plants</Link>
+                        <Link className="p-2" onClick={() => scroll({ref: this.myRef, y: 820, smooth: true})}>All Plants</Link>
                         )}
                     </ScrollTo>
                 }

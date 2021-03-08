@@ -4,7 +4,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
 class CheckoutPage extends Component {
+  
   render() {
+    // console.log("PLANT:", plant)
     const promise = loadStripe("pk_test_51IQBseEqJqsi8ZD5sJWeLyoMPSxJBKvGcgO3Srmc5UOSqAT6Zp44JmszMSiJGqO9R3eleWrCNyv9TOv9IWmoSLyQ00XHsxNLVR");
     return (
       <div className="container row mt-5">

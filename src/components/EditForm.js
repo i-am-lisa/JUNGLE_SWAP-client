@@ -29,10 +29,7 @@ class EditForm extends Component {
   }
 
 
-//  handelGoBack = () => {
-//   // this DOES NOT work, only URL pathname is updated correctly.
-//   browserHistory.push('/my/path/name');
-// }
+
 
   handleNameChange = (event) => {
     let text = event.target.value;
@@ -67,6 +64,17 @@ class EditForm extends Component {
     );
   }
 
+  handlePriceChange = (event) => {
+    let text = event.target.value;
+    let clonePlant = JSON.parse(JSON.stringify(this.state.plant));
+    clonePlant.price = text;
+    this.setState(
+      {
+        plant: clonePlant
+      }
+    )
+  }
+
   handleLocationChange = (event) => {
     let text = event.target.value;
     let clonePlant = JSON.parse(JSON.stringify(this.state.plant));
@@ -77,6 +85,7 @@ class EditForm extends Component {
       }
     );
   }
+
 
   handleImageChange = (event) => {
     let image = event.target.files[0];
@@ -102,9 +111,7 @@ class EditForm extends Component {
       );
   }
 
-    // goBack() {
-    //   window.history.go(-2);
-    // }
+  
 
   render() {
     const {plant} = this.state
@@ -123,9 +130,10 @@ class EditForm extends Component {
             <option value="shade"> shade </option>
             <option value="sun and shade"> sun and shade </option>
           </select>
+          <input className="mb-4 smallWidth" name="price" type="number" min="1" onChange={ this.handlePriceChange } value={ plant.price }/>€ <br/>
           <div className="row justify-content-around">
             <button className="btn btn-sm" onClick={ () => { onEdit(plant) } }  > Save changes </button>
-            <Link to={ "/" }> <button className="btn btn-sm mx-2"> Go back </button> </Link>
+            <Link to={ `/` }> <button className="btn btn-sm mx-2"> Go back </button> </Link>
           </div>
         </div>
       </div>

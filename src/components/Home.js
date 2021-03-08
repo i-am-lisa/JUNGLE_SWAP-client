@@ -37,7 +37,7 @@ class Home extends Component {
             <div className="mb-4">
               <input className="smallWidth" type="text" placeholder="Search..." value={ query } onChange={ this.props.onSearch }/>
             </div>
-            <div className="row align-items-end container-fluid">
+            <div ref={this.myRef} className="row align-items-end container-fluid">
             {
               plants.map(
                 (plant) => {

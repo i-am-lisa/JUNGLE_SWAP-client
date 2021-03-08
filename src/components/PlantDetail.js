@@ -33,6 +33,7 @@ class PlantDetail extends Component {
     if (!user) {
       return <Redirect to={ "/signin" }/>
     }
+    console.log("Plant:",plant)
     return (
       <div className="container mt-5 row row-md-10 offset-1 offset-md-4">
         <div className="mt-4 mb-3 pt-4 container">
@@ -50,9 +51,13 @@ class PlantDetail extends Component {
           <div className="mt-2"> <span> Description: </span> { plant.description } </div>
           <div className="mt-2"> <span> Size: </span> { plant.size } cm </div>
           <div className="mt-2"> <span> Likes: </span> { plant.location } </div>
+          <div className="mt-2"> <span> Price: </span> { plant.price } € </div>
+
           <div className="mt-3 col justify-content-center">
             <div className="row-2 justify-content-center">
               {
+               
+
                 (user._id === plant.creator) ? (
                   <>
                     <Link to={ `/plant/${ plant._id }/edit` }> <button className="btn btn-sm ml-2"> Edit </button> </Link>
@@ -66,18 +71,25 @@ class PlantDetail extends Component {
                   </>
                 ) : ( 
                   <>
-                    <Link to={ `/plant/${ plant._id }/checkout` }> <button className="btn btn-sm ml-2"> Buy </button> </Link>
+                    <Link plant={plant} to={ `/plant/${ plant._id }/checkout` }> 
+                      <button className="btn btn-sm ml-2"> Buy </button> 
+                    </Link>
+
                     <button className="btn btn-sm ml-2"> Swap </button>
                   </>
                 )
               }
-              <Link to={ "/" }> <button className="btn btn-sm ml-2"> Go back </button> </Link>
+              <Link to={ "/" }> 
+                <button className="btn btn-sm ml-2"> Go back </button> 
+              </Link>
             </div>
           </div>
         </div>
       </div>
     );
   }
+ 
+
 }
 
 export default PlantDetail;

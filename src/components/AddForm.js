@@ -22,6 +22,8 @@ class AddForm extends Component {
               <option value="shade"> shade </option>
               <option value="sun and shade"> sun and shade </option>
             </select>
+            <input className="mb-4 smallWidth" name="price" type="number" min="1" placeholder="Price"/>€ <br/>
+
             <input className="mb-4" name="plantImage" type="file"/>
             <button className="btn btn-sm" type="submit" > Add plant </button>
           </form>

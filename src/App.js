@@ -13,7 +13,6 @@ import EditForm from './components/EditForm';
 import PlantDetail from './components/PlantDetail'
 import CheckoutPage from './components/CheckoutPage'
 import LogOut from './components/LogOut';
-import { browserHistory } from 'react-router';
 
 
 
@@ -27,6 +26,8 @@ class App extends Component {
     plants: [],
     query: "",
   }
+
+ 
 
   // ------------Fetch initial data to be displayed---------------
 
@@ -113,6 +114,7 @@ class App extends Component {
     let name = event.target.name.value;
     let description = event.target.description.value;
     let size = event.target.size.value;
+    let price = event.target.price.value;
     let image = event.target.plantImage.files[0];
     let location = event.target.location.value;
     let uploadForm = new FormData();
@@ -125,6 +127,7 @@ class App extends Component {
             name: name,
             description: description,
             size: size,
+            price: price,
             image: response.data.image,
             location: location
           };
@@ -165,6 +168,7 @@ class App extends Component {
       name: plant.name,
       description: plant.description,
       size: plant.size,
+      price: plant.price,
       image: plant.image,
       location: plant.location
     };
@@ -177,6 +181,7 @@ class App extends Component {
                   singlePlant.name = plant.name
                   singlePlant.description = plant.description
                   singlePlant.size = plant.size
+                  singlePlant.price = plant.price
                   singlePlant.image = plant.image
                   singlePlant.location = plant.location
               }
