@@ -133,7 +133,9 @@ class EditForm extends Component {
           <input className="mb-4 smallWidth" name="price" type="number" min="1" onChange={ this.handlePriceChange } value={ plant.price }/>€ <br/>
           <div className="row justify-content-around">
             <button className="btn btn-sm" onClick={ () => { onEdit(plant) } }  > Save changes </button>
-            <Link to={ `/` }> <button className="btn btn-sm mx-2"> Go back </button> </Link>
+            <Link to={ `/plants/${plant._id}` }> 
+              <button className="btn btn-sm mx-2"> Go back </button> 
+            </Link>
           </div>
         </div>
       </div>

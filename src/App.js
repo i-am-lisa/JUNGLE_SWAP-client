@@ -14,17 +14,13 @@ import PlantDetail from './components/PlantDetail'
 import CheckoutPage from './components/CheckoutPage'
 import LogOut from './components/LogOut';
 
-
-
-
-
 class App extends Component {
 
   state = {
     loggedInUser: null,
     error: null,
     plants: [],
-    query: "",
+    query: ""
   }
 
  
@@ -321,13 +317,11 @@ class App extends Component {
   // --------------------Payment-----------------------
 
   handleCheckout = () => {
+    console.log("PPPPLLLLAAANNTTT: ");
     axios.post(`${config.API_URL}/api/create-payment-intent`, {}, { withCredentials: true })
       .then(
         () => {
           this.setState(
-            {
-              loggedInUser: null
-            }, 
             () => {
               this.props.history.push("/");
             }
@@ -340,7 +334,6 @@ class App extends Component {
         }
       );
   }
-
 
   // --------------Render------------------
 
@@ -380,11 +373,13 @@ class App extends Component {
               return <AddForm onAdd={ this.handleSubmit} user={ loggedInUser }/>
             }
           }/>
-          <Route path="/plant/:plantId/edit" render={
-            (routeProps) => {
-              return <EditForm onEdit={ this.handleEditPlant } { ...routeProps }/>
-            }
-          }/>
+
+            <Route path="/plant/:plantId/edit" render={
+              (routeProps) => {
+                return <EditForm onEdit={ this.handleEditPlant } { ...routeProps }/>
+              }
+             }/>
+
           <Route path="/plant/:plantId/checkout" render={
             (routeProps) => {
               return <CheckoutPage onCheckout={ this.handleCheckout } { ...routeProps }/>

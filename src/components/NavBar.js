@@ -3,8 +3,6 @@ import {Navbar, Nav} from  'react-bootstrap'
 import {Link} from  'react-router-dom'
 import { ScrollTo } from "react-scroll-to";
 
-
-
 function NavBar (props) {
   const myRef = React.createRef();
 
@@ -15,15 +13,14 @@ function NavBar (props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav  className="mr-auto">
-          
             <Link className="p-2" to="/add-form"> Add Plant </Link>
             {
-                    <ScrollTo >
-                        {({ scroll }) => (
-                        <Link className="p-2" onClick={() => scroll({ref: this.myRef, y: 820, smooth: true})}>All Plants</Link>
-                        )}
-                    </ScrollTo>
-                }
+              <ScrollTo >
+                  {({ scroll }) => (
+                    <Link className="p-2" onClick={() => scroll({y: 820, smooth: true})}>All Plants</Link>
+                  )}
+              </ScrollTo>
+            }
             {
               props.user ? (
                 <Link className="p-2" to="/logout"> Log out </Link>
