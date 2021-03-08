@@ -1,15 +1,16 @@
-import React from  'react'
-import {Navbar, Nav} from  'react-bootstrap'
-import {Link} from  'react-router-dom'
+import React from  "react";
+import {Navbar, Nav} from "react-bootstrap";
+import {Link} from  "react-router-dom";
 
 function NavBar (props) {
   return (
     <>
-      <Navbar bg="light"  expand="lg">
-      <Navbar.Brand href="/">JungleSwap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"  />
+      <Navbar  className="pl-5" variant="dark" expand="lg" fixed="top">
+      <Navbar.Brand href="/"> JungleSwap </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav  className="mr-auto">
+            <Link className="p-2" to="/"> All Plants </Link>
             <Link className="p-2" to="/add-form"> Add Plant </Link>
             {
               props.user ? (
@@ -25,6 +26,7 @@ function NavBar (props) {
         </Navbar.Collapse>
       </Navbar>  
     </>
-    )
-  }
-  export default NavBar
+  );
+}
+
+export default NavBar;

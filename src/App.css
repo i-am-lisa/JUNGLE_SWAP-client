@@ -1,178 +1,172 @@
-.App {
-  text-align: center;
+/* ---------- elements ------------ */ 
+body {
+  background-color: rgb(194, 224, 194);
+  /*background-image: linear-gradient(rgba(59, 117, 59, 0.7), rgb(194, 224, 194));
+  height: 100vh;*/
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav {
+  background: rgba(59, 117, 59, 0.7);
+  border-bottom: solid rgb(142, 214, 166) 1px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  color: rgb(87, 255, 87);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a:hover {
+  color: rgb(197, 255, 197);
+  text-decoration: none;
 } 
 
+form input {
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px black;
+}
 
+div input {
+  width: 100%;
+  /*1px solid black;*/
+  border: none;
+  border-radius: 3px;  
+  box-shadow: 5px 5px 5px black;
+}
+
+span {
+  font-weight: 700;
+}
+
+img {
+  border: none;
+  box-shadow: 5px 5px 5px black;
+  border-radius: 3px;
+}
+
+select {
+  border: none;
+  box-shadow: 5px 5px 5px black;
+  border-radius: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+
+/* ------------- own classes -------------- */
 .headerImg{
   background-image: url('./images/valentin-beauvais-kDaxao_v_5o-unsplash.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 1000px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  
+  height: 800px;
 }
 
-.headerImg h1{
-  
-  text-align: center;
-color: white;
-/* border: solid white 3px; */
-text-shadow: 0px 0px 2px black;
+.headerImg h2,
+.headerImg h5 {
+  color: rgb(137, 251, 175);
+  text-shadow: 0px 0px 2px black;
 } 
 
-
-/*---Stripe Payment---*/
-/* 
-
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.borderAround {
+  background: rgba(59, 117, 59, 0.3);
+  border: solid rgb(142, 214, 166) 1px;
 }
 
-#root {
-  display: flex;
-  align-items: center;
+.miniPicSize {
+  width: 6rem;
 }
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-  width: 100vw;
+
+.smallPicSize {
+  width: 10rem;
 }
-.checkoutForm {
-  width: 30vw;
-  align-self: center;
-  box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-    0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
-  border-radius: 7px;
-  padding: 40px;
+
+.bigPicSize {
+  width: 15rem;
 }
-input {
-  border-radius: 6px;
-  margin-bottom: 6px;
-  padding: 12px;
-  border: 1px solid rgba(50, 50, 93, 0.1);
-  max-height: 44px;
-  font-size: 16px;
-  width: 100%;
-  background: white;
-  box-sizing: border-box;
+
+.biggerFontSize {
+  font-size: 1.5rem;
 }
+
+.smallWidth {
+  width: 20%;
+}
+
+/* ---------------- Bootstrap classes ---------------- */
+.btn {
+  background-color: rgb(85, 158, 85);
+  color: rgb(87, 255, 87);
+  /*1px solid black;*/
+  border: none;
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px black;
+}
+
+.btn:hover {
+  background-color: rgb(94, 168, 94);
+  color: rgb(197, 255, 197);
+  /*1px solid black;*/
+  border: none;
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px black;
+}
+
+.form-control {
+  /*1px solid black;*/
+  border: none;
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px black;
+}
+
+
+/* -------------- Stripe ------------- */
+#card-element {
+  /*border: 1px solid black;*/
+  background-color: white;
+  border: none;
+  box-shadow: 5px 5px 5px black;
+  border-radius: 3px;
+}
+
 .result-message {
-  line-height: 22px;
-  font-size: 16px;
+  text-align: center;
 }
+
 .result-message a {
-  color: rgb(89, 111, 214);
+  color: rgb(79, 167, 100);
   font-weight: 600;
-  text-decoration: none;
+  text-align: center;
 }
+
 .hidden {
   display: none;
 }
-#card-error {
-  color: rgb(105, 115, 134);
-  font-size: 16px;
-  line-height: 20px;
-  margin-top: 12px;
+
+.card-error {
+  color: rgb(238, 63, 20);
   text-align: center;
 }
-#card-element {
-  border-radius: 4px 4px 0 0;
-  padding: 12px;
-  border: 1px solid rgba(50, 50, 93, 0.1);
-  max-height: 44px;
-  width: 100%;
-  background: white;
-  box-sizing: border-box;
-}
-#payment-request-button {
-  margin-bottom: 32px;
-} */
-/* Buttons and links */
-/* button {
-  background: #5469d4;
-  font-family: Arial, sans-serif;
-  color: #ffffff;
-  border-radius: 0 0 4px 4px;
-  border: 0;
-  padding: 12px 16px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  display: block;
-  transition: all 0.2s ease;
-  box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-  width: 100%;
-}
-button:hover {
-  filter: contrast(115%);
-}
+
 button:disabled {
   opacity: 0.5;
   cursor: default;
-} */
+  border: none;
+  box-shadow: 5px 5px 5px black;
+  border-radius: 3px;
+} 
+
 /* spinner/processing state, errors */
-/* .spinner,
+.spinner,
 .spinner:before,
 .spinner:after {
-  border-radius: 50%;
+  /*border: 1px solid black;*/
+  border: none;
+  box-shadow: 5px 5px 5px black;
+  border-radius: 3px;
 }
+
 .spinner {
-  color: #ffffff;
-  font-size: 22px;
-  text-indent: -99999px;
+  color: #6dd687;
   margin: 0px auto;
-} */
-
-
+}

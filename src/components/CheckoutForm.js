@@ -1,42 +1,48 @@
 import React, { useState, useEffect } from "react";
-import {
-  CardElement,
-  useStripe,
-  useElements
-} from "@stripe/react-stripe-js";
-import config from '../config'
+import { Link, Redirect } from "react-router-dom";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import config from "../config";
 
-
-export default function CheckoutForm() {
-  const [succeeded, setSucceeded] = useState(false);
-  const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState('');
-  const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState('');
+function CheckoutForm(props) {
+  const [ succeeded, setSucceeded ] = useState(false);
+  const [ error, setError ] = useState(null);
+  const [ processing, setProcessing ] = useState("");
+  const [ disabled, setDisabled ] = useState(true);
+  const [ clientSecret, setClientSecret ] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-  useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    window
-      .fetch(`${config.API_URL}/api/create-payment-intent`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({items: [{ id: "xl-tshirt" }]})
-      })
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setClientSecret(data.clientSecret);
-      });
-  }, []);
+  useEffect(
+    () => {
+      // Create PaymentIntent as soon as the page loads
+      window
+        .fetch(
+          `${ config.API_URL }/api/create-payment-intent`, 
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ items: [{ id: "xl-tshirt" }] })
+          }
+        )
+        .then(
+          res => {
+            return res.json();
+          }
+        )
+        .then(
+          data => {
+            setClientSecret(data.clientSecret);
+          }
+        );
+    }, 
+    []
+  );
   const cardStyle = {
     style: {
       base: {
         color: "#32325d",
-        fontFamily: 'Arial, sans-serif',
+        fontFamily: "Arial, sans-serif",
         fontSmoothing: "antialiased",
         fontSize: "16px",
         "::placeholder": {
@@ -58,51 +64,69 @@ export default function CheckoutForm() {
   const handleSubmit = async ev => {
     ev.preventDefault();
     setProcessing(true);
-    const payload = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement)
+    const payload = await stripe.confirmCardPayment(
+      clientSecret, 
+      {
+        payment_method: {
+          card: elements.getElement(CardElement)
+        }
       }
-    });
+    );
     if (payload.error) {
-      setError(`Payment failed ${payload.error.message}`);
+      setError(`Payment failed ${ payload.error.message }`);
       setProcessing(false);
-    } else {
+    } 
+    else {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
     }
-  };
+  }
+
   return (
-    <form className="checkoutForm" id="payment-form" onSubmit={handleSubmit}>
-      <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
-      <button
-        disabled={processing || disabled || succeeded}
-        id="submit"
-      >
-        <span id="button-text">
-          {processing ? (
-            <div className="spinner" id="spinner"></div>
-          ) : (
-            "Pay now"
-          )}
-        </span>
-      </button>
-      {/* Show any error that happens when processing the payment */}
-      {error && (
-        <div className="card-error" role="alert">
-          {error}
+    <div className="container col-9">
+      <form className="checkoutForm pt-5 mt-5" id="payment-form" onSubmit={ handleSubmit }>
+      <h3 className="text-center mb-4 p-2"> 15,00 € </h3>
+        <CardElement className="p-2" id="card-element" options={cardStyle} onChange={ handleChange }/>
+        <div className="row justify-content-center">
+          <button className="btn btn-sm mt-5 mb-4" disabled={processing || disabled || succeeded} id="submit">
+            <span id="button-text">
+            {
+              processing ? (
+                <div className="spinner" id="spinner"></div>
+              ) : (
+                "Pay now"
+              )
+            }
+            </span>
+          </button>
         </div>
-      )}
-      {/* Show a success message upon completion */}
-      <p className={succeeded ? "result-message" : "result-message hidden"}>
-        Payment succeeded, see the result in your
-        <a
-          href={`https://dashboard.stripe.com/test/payments`}
-        >
-          {" "}
-          Stripe dashboard.
-        </a> Refresh the page to pay again.
-      </p>
-    </form>
+        {/* Show any error that happens when processing the payment */}
+        {
+          error && (
+            <div className="card-error" role="alert">
+              { error }
+            </div>
+          )
+        }
+        {/* Show a success message upon completion */}
+        <p className={
+          succeeded ? (
+            "result-message text-center"
+          ) : (
+            "result-message hidden text-center"
+          )
+        }>
+          Payment succeeded, see the result in your
+          <a href={ `https://dashboard.stripe.com/test/payments` }> { " " } Stripe dashboard. </a> 
+          Refresh the page to pay again.
+        </p>
+      </form>
+      <div className="row justify-content-center mt-4">
+        <Link to={ "/" }> <button className="btn btn-sm"> Go back </button> </Link>
+      </div>
+    </div>
   );
 }
+
+export default CheckoutForm;

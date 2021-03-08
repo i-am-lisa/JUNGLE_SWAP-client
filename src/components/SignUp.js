@@ -1,30 +1,34 @@
-import React from 'react';
+import React from "react";
 
-function SignUp(props){
-
-    return (
-        <form onSubmit={props.onSignUp}>
-            <div className="form-group">
-                <label htmlFor="InputUsername">Username</label>
-                <input type="text" className="form-control" id="InputUsername" name="username" />
-            </div>
-            <div className="form-group">
-                <label htmlFor="InputEmail">Email address</label>
-                <input type="email" className="form-control" id="InputEmail" name="email" />
-                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div className="form-group">
-                <label htmlFor="InputPassword">Password</label>
-                <input name="password" type="password" className="form-control" id="InputPassword" />
-            </div>
-            {
-                props.error ? (
-                    <p style={{color: 'red'}}>{ props.error.errorMessage}</p>
-                ) : null
-            }
-            <button type="submit" className="btn btn-primary">Submit</button>
+function SignUp(props) {
+  return (
+    <div className="container row mt-5">
+      <div className="mt-5 col-11 col-md-5 offset-1 offset-md-5">
+        <form onSubmit={ props.onSignUp }>
+          <div className="form-group">
+            <label htmlFor="InputUsername"> Username </label>
+            <input type="text" className="form-control" id="InputUsername" name="username"/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="InputEmail"> Email address </label>
+            <input type="email" className="form-control" id="InputEmail" name="email"/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="InputPassword"> Password </label>
+            <input name="password" type="password" className="form-control" id="InputPassword"/>
+          </div>
+          {
+            props.error ? (
+              <p style={{ color: "red" }}>{ props.error.errorMessage }</p>
+            ) : (
+              null
+            )
+          }
+          <button type="submit" className="btn btn-primary mt-4"> Sign up </button>
         </form>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default SignUp
+export default SignUp;
