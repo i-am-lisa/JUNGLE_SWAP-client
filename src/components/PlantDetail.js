@@ -66,7 +66,9 @@ class PlantDetail extends Component {
                   </>
                 ) : ( 
                   <>
-                    <Link to={ `/plant/${ plant._id }/checkout` }> <button className="btn btn-sm ml-2"> Buy </button> </Link>
+                    <Link to={ {pathname:`/plant/${ plant._id }/checkout`, plant:plant} } >
+                      <button className="btn btn-sm ml-2"> Buy </button> 
+                    </Link>
                     <button className="btn btn-sm ml-2"> Swap </button>
                   </>
                 )

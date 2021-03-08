@@ -17,12 +17,13 @@ class Home extends Component {
                 <h2 className="pt-4 mt-5 mb-2"> JungleSwap </h2>
                 <h5 className="mt-3 mb-5"> Share your green heart </h5>
                 <div className="mb-5">
-
-                <ScrollTo >
-                  {({ scroll }) => (
-                    <Link className="biggerFontSize" onClick={() => scroll({y: 820, smooth: true})}> Try it </Link>
-                        )}
-                    </ScrollTo>
+                  <ScrollTo>
+                    {
+                      ({ scroll }) => (
+                        <Link className="biggerFontSize" onClick={() => scroll({y: 820, smooth: true})}> Try it </Link>
+                      )
+                    }
+                  </ScrollTo>
                 </div>
               </div>
             </div>

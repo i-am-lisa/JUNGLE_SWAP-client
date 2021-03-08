@@ -82,14 +82,14 @@ function CheckoutForm(props) {
       setSucceeded(true);
     }
   }
-
+  const {plant} = props;
   return (
     <div className="container col-9">
       <form className="checkoutForm pt-5 mt-5" id="payment-form" onSubmit={ handleSubmit }>
-      <h3 className="text-center mb-4 p-2"> 15,00 € </h3>
+      <h3 className="text-center mb-4 p-2"> {plant.name} € </h3>
         <CardElement className="p-2" id="card-element" options={cardStyle} onChange={ handleChange }/>
         <div className="row justify-content-center">
-          <button className="btn btn-sm mt-5 mb-4" disabled={processing || disabled || succeeded} id="submit">
+          <button onClick={props.onCheckout} className="btn btn-sm mt-5 mb-4" disabled={processing || disabled || succeeded} id="submit">
             <span id="button-text">
             {
               processing ? (
@@ -128,5 +128,5 @@ function CheckoutForm(props) {
     </div>
   );
 }
-
+/* `/plants/${plant._id}` */
 export default CheckoutForm;
