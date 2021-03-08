@@ -28,6 +28,12 @@ class EditForm extends Component {
       );
   }
 
+
+//  handelGoBack = () => {
+//   // this DOES NOT work, only URL pathname is updated correctly.
+//   browserHistory.push('/my/path/name');
+// }
+
   handleNameChange = (event) => {
     let text = event.target.value;
     let clonePlant = JSON.parse(JSON.stringify(this.state.plant));
@@ -95,6 +101,10 @@ class EditForm extends Component {
         }
       );
   }
+
+    // goBack() {
+    //   window.history.go(-2);
+    // }
 
   render() {
     const {plant} = this.state

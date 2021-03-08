@@ -1,5 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import Chatbot from './Chatbot'
+import { ScrollTo } from "react-scroll-to";
+
 
 class Home extends Component {
   render() {
@@ -14,12 +17,18 @@ class Home extends Component {
                 <h2 className="pt-4 mt-5 mb-2"> JungleSwap </h2>
                 <h5 className="mt-3 mb-5"> Share your green heart </h5>
                 <div className="mb-5">
-                  <Link className="biggerFontSize" to="/"> Try it </Link>
+
+                <ScrollTo >
+                  {({ scroll }) => (
+                    <Link className="biggerFontSize" onClick={() => scroll({y: 820, smooth: true})}> Try it </Link>
+                        )}
+                    </ScrollTo>
                 </div>
               </div>
             </div>
           </header>
         }
+        <Chatbot/>
         <section>
           <div className="container mt-5">
             <div className="mt-4 mb-3 pt-5">

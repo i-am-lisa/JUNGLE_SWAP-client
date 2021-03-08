@@ -3,9 +3,10 @@ import { Redirect } from "react-router-dom";
 
 class AddForm extends Component {
   render() {
-    const { user } = this.props
-    if (!user) {
-      return <Redirect to={ "/signin" }/>
+    const {user} = this.props
+
+    if(!user){
+      return <Redirect to={'/signup'}/>
     }
     return (
       <div className="container row mt-5">
