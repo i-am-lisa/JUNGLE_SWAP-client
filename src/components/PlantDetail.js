@@ -31,7 +31,7 @@ class PlantDetail extends Component {
     const { plant } = this.state;
     const { onDelete, user } = this.props;
     if (!user) {
-      return <Redirect to={ "/signin" }/>
+      return <Redirect to={ "/signup" }/>
     }
     console.log("Plant:",plant)
     return (

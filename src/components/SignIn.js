@@ -2,7 +2,7 @@ import React from "react";
 
 function SignIn(props) {
   return (
-    <div className="container row mt-5">
+    <div className="container row mt-5 custom">
       <div className="mt-5 col-11 col-md-5 offset-1 offset-md-5">
       <form onSubmit={ props.onSignIn }>
         <div className="form-group">
