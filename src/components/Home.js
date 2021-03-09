@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import Chatbot from './Chatbot'
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
+import Chatbot from "./Chatbot"
 import { ScrollTo } from "react-scroll-to";
 
 
@@ -43,11 +43,14 @@ class Home extends Component {
               plants.map(
                 (plant) => {
                   return (
-                    <div className="col " key={plant._id}>
-                      <Link to={ `/plants/${ plant._id }` }>
-                        <img className="smallPicSize" src={ plant.image } alt={ plant.name }/>
-                      </Link>
-                      <div className="mt-2 mb-4"> <span> { plant.name } </span> </div>
+                    <div className="col" key={ plant._id }>
+                      <div className="card cardSmallWidth mb-5">
+                        <img className="card-img-top smallPicSize" src={ plant.image } alt={ plant.name }/>
+                        <div className="card-body">
+                          <h5> { plant.name } </h5>
+                          <Link className="btn btn-sm btn-primary" to={ `/plants/${ plant._id }` }> Details </Link>
+                        </div>                      
+                      </div>
                     </div>
                   );
                 } 

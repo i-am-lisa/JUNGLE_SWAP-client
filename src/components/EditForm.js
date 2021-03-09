@@ -111,31 +111,33 @@ class EditForm extends Component {
       );
   }
 
-  
-
   render() {
-    const {plant} = this.state
-    const {onEdit} = this.props
+    const {plant} = this.state;
+    const {onEdit} = this.props;
     return (
       <div className="container row mt-5">
-        <div className="mt-5 col-11 col-md-5 offset-1 offset-md-5">
+        <div className="mt-2 col-11 col-md-5 offset-1 offset-md-5">
           <h4 className="mt-5 mb-4"> Edit your plant </h4>
-          <img className="mb-4 miniPicSize" src={ plant.image } alt={ plant.name }/>
-          <input className="mb-4" onChange={ this.handleImageChange } type="file"/>
-          <input className="mb-4"  type="text" onChange={ this.handleNameChange } value={ plant.name }/>
-          <input className="mb-4"  type="text" onChange={ this.handleDescChange } value={ plant.description }/>
-          <input className="mb-4 smallWidth"  type="number" onChange={this.handleSizeChange} value={ plant.size }/> cm <br/>
-          <select  className="mb-4" onChange={ this.handleLocationChange } name="location" type="text" placeholder="Select">
-            <option value="sun"> sun </option>
-            <option value="shade"> shade </option>
-            <option value="sun and shade"> sun and shade </option>
-          </select>
-          <input className="mb-4 smallWidth" name="price" type="number" min="1" onChange={ this.handlePriceChange } value={ plant.price }/>€ <br/>
-          <div className="row justify-content-around">
-            <button className="btn btn-sm" onClick={ () => { onEdit(plant) } }  > Save changes </button>
-            <Link to={ `/plants/${plant._id}` }> 
-              <button className="btn btn-sm mx-2"> Go back </button> 
-            </Link>
+          <div className="card cardSmallWidth mb-5">
+            <img className="mb-2 smallPicSize" src={ plant.image } alt={ plant.name }/>
+            <div className="card-body">
+              <input className="mb-2" onChange={ this.handleImageChange } type="file"/>
+              <input className="mb-2"  type="text" onChange={ this.handleNameChange } value={ plant.name }/>
+              <input className="mb-2"  type="text" onChange={ this.handleDescChange } value={ plant.description }/>
+              <input className="mb-2 smallWidth"  type="number" onChange={this.handleSizeChange} value={ plant.size }/> cm <br/>
+              <select  className="mb-2" onChange={ this.handleLocationChange } name="location" type="text" placeholder="Select">
+                <option value="sun"> sun </option>
+                <option value="shade"> shade </option>
+                <option value="sun and shade"> sun and shade </option>
+              </select> <br/>
+              <input className="mb-4 smallWidth" name="price" type="number" min="1" onChange={ this.handlePriceChange } value={ plant.price }/> € 
+              <div className="row justify-content-around">
+                <button className="btn btn-sm" onClick={ () => { onEdit(plant) } }  > Save changes </button>
+                <Link to={ `/plants/${plant._id}` }> 
+                  <button className="btn btn-sm mx-2"> Go back </button> 
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
