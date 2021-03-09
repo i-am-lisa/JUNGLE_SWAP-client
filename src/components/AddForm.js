@@ -3,10 +3,9 @@ import { Redirect } from "react-router-dom";
 
 class AddForm extends Component {
   render() {
-    const {user} = this.props
-
-    if(!user){
-      return <Redirect to={'/signup'}/>
+    const { user } = this.props
+    if (!user){
+      return <Redirect to={ "/signup" }/>
     }
     return (
       <div className="container row mt-5">
@@ -21,11 +20,10 @@ class AddForm extends Component {
               <option value="sun"> sun </option>
               <option value="shade"> shade </option>
               <option value="sun and shade"> sun and shade </option>
-            </select>
-            <input className="mb-4 smallWidth" name="price" type="number" min="1" placeholder="Price"/>€ <br/>
-
+            </select> <br/>
+            <input className="mb-4 smallWidth" name="price" type="number" min="1" placeholder="Price"/> € <br/>
             <input className="mb-4" name="plantImage" type="file"/>
-            <button className="btn btn-sm" type="submit" > Add plant </button>
+            <button className="btn btn-sm" type="submit"> Add plant </button>
           </form>
         </div>
       </div>

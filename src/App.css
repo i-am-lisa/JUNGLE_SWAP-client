@@ -21,35 +21,35 @@ a:hover {
 
 form input {
   width: 100%;
-  border: none;
+  /*border: none;
   border-radius: 3px;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px black;*/
 }
 
 div input {
   width: 100%;
   /*1px solid black;*/
-  border: none;
+  /*border: none;
   border-radius: 3px;  
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px black;*/
 }
 
 span {
   font-weight: 700;
 }
 
-img {
+/*img {
   border: none;
   box-shadow: 5px 5px 5px black;
   border-radius: 3px;
-}
+}*/
 
 select {
-  border: none;
+  /*border: none;
   box-shadow: 5px 5px 5px black;
   border-radius: 3px;
   padding-top: 1px;
-  padding-bottom: 1px;
+  padding-bottom: 1px;*/
 }
 
 
@@ -78,11 +78,15 @@ select {
 }
 
 .smallPicSize {
-  width: 10rem;
+  object-fit: cover;
+  width: 16rem;
+  height: 16rem;
 }
 
-.bigPicSize {
-  width: 15rem;
+.mediumPicSize {
+  object-fit: cover;
+  width: 20rem;
+  height: 20rem;
 }
 
 .biggerFontSize {
@@ -117,6 +121,14 @@ select {
   border: none;
   border-radius: 3px;
   box-shadow: 5px 5px 5px black;
+}
+
+.cardSmallWidth {
+  width: 16rem;
+}
+
+.cardMediumWidth {
+  width: 20rem;
 }
 
 
