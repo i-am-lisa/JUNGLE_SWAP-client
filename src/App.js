@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'
-import { Route, Switch, withRouter } from 'react-router-dom';
-import config from './config';
-import axios from 'axios';
-import Home from './components/Home';
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
-import AddForm from './components/AddForm';
-import EditForm from './components/EditForm';
-import PlantDetail from './components/PlantDetail'
-import CheckoutPage from './components/CheckoutPage'
-import LogOut from './components/LogOut';
-=======
 import React, { Component } from "react";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
@@ -33,7 +15,7 @@ import CheckoutPage from "./components/CheckoutPage"
 import LogOut from "./components/LogOut";
 import RequestForm from "./components/RequestForm";
 import RequestsPage from "./components/RequestsPage";
->>>>>>> origin/christian-code
+import Footer from "./components/Footer";
 
 class App extends Component {
 
