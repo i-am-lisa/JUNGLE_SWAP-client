@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class AddForm extends Component {
   render() {
@@ -23,7 +23,12 @@ class AddForm extends Component {
             </select> <br/>
             <input className="mb-4 smallWidth" name="price" type="number" min="1" placeholder="Price"/> € <br/>
             <input className="mb-4" name="plantImage" type="file"/>
-            <button className="btn btn-sm" type="submit"> Add plant </button>
+            <div className="col-12 justify-content-end">
+              <button className="btn btn-sm" type="submit"> Add plant </button>
+              <Link to={ `/` }> 
+                <button className="btn btn-sm mx-5"> Go back </button> 
+              </Link>
+              </div>
           </form>
         </div>
       </div>
