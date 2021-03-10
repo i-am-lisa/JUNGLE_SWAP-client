@@ -115,9 +115,9 @@ class EditForm extends Component {
     const {plant} = this.state;
     const {onEdit} = this.props;
     return (
-      <div className="container row mt-5">
+      <div className="container row mt-5 fullscreen">
         <div className="mt-2 col-11 col-md-5 offset-1 offset-md-5">
-          <h4 className="mt-5 mb-4"> Edit your plant </h4>
+          <h2 className="mt-5 mb-4"> Edit your plant </h2>
           <div className="card cardSmallWidth mb-5">
             <img className="mb-2 smallPicSize" src={ plant.image } alt={ plant.name }/>
             <div className="card-body">
@@ -132,9 +132,9 @@ class EditForm extends Component {
               </select> <br/>
               <input className="mb-4 smallWidth" name="price" type="number" min="1" onChange={ this.handlePriceChange } value={ plant.price }/> € 
               <div className="row justify-content-around">
-                <button className="btn btn-sm" onClick={ () => { onEdit(plant) } }  > Save changes </button>
+                <button className="btn btn-sm btn-outline-dark" onClick={ () => { onEdit(plant) } }  > Save changes </button>
                 <Link to={ `/plants/${plant._id}` }> 
-                  <button className="btn btn-sm mx-2"> Go back </button> 
+                  <button className="btn btn-sm mx-2 btn-outline-dark"> Go back </button> 
                 </Link>
               </div>
             </div>

@@ -34,9 +34,11 @@ class PlantDetail extends Component {
       return <Redirect to={ "/signup" }/>
     }
     return (
-      <div className="container mt-5 row row-md-10 offset-1 offset-md-4">
+      <div className="container mt-5 row row-md-10 offset-1 offset-md-4 fullscreen">
+        
         <div className="mt-4 mb-3 pt-4 container">
-          <h4> Plant details </h4>
+        
+          <h2> Plant details </h2>
         </div>
         <div className="col">
           <div className="card cardMediumWidth">
@@ -70,14 +72,14 @@ class PlantDetail extends Component {
                     ) : (
                       <>
                         <Link to={{ pathname: `/plant/${plant._id}/checkout`, plant: plant }} >
-                          <button className="btn btn-sm ml-2"> Buy </button>
+                          <button className="btn btn-sm ml-2 btn-outline-dark"> Buy </button>
                         </Link>
-                        <button className="btn btn-sm ml-2"> Swap </button>
+                        <button className="btn btn-sm ml-2 btn-outline-dark"> Swap </button>
                       </>
                     )
                   }
                   <Link to={"/"}>
-                    <button className="btn btn-sm ml-2"> Go back </button>
+                    <button className="btn btn-sm ml-2 "> Go back </button>
                   </Link>
                 </div>
               </div>

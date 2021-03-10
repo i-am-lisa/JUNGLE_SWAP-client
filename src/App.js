@@ -8,6 +8,7 @@ import config from './config';
 import axios from 'axios';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import AddForm from './components/AddForm';
 import EditForm from './components/EditForm';
 import PlantDetail from './components/PlantDetail'
@@ -340,7 +341,7 @@ class App extends Component {
   render() {
     const { plants, loggedInUser, error, query } = this.state;
     return (
-      <div>
+      <div class="main">
         <NavBar onLogOut={ this.handleLogOut } user={ loggedInUser }/>
         <Switch>
           <Route exact path="/" render={
@@ -386,6 +387,7 @@ class App extends Component {
             }
           }/>          
         </Switch>
+        <Footer/>
       </div>
     );
   }

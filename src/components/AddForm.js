@@ -3,14 +3,16 @@ import { Redirect } from "react-router-dom";
 
 class AddForm extends Component {
   render() {
-    const { user } = this.props
-    if (!user){
-      return <Redirect to={ "/signup" }/>
+    const {user} = this.props
+
+    if(!user){
+      return <Redirect to={'/signup'}/>
     }
     return (
-      <div className="container row mt-5">
-        <div className="mt-5 col-11 col-md-5 offset-1 offset-md-5">
-          <h4 className="mt-5 mb-5"> Add a your plant </h4>
+    
+      <div className="container row mt-5 fullscreen">
+        <div className="mt-5 col-11 col-md-5 offset-1 offset-md-6">
+          <h2 className="mt-5 mb-5">Uplaod a plant </h2>
           <form onSubmit={ this.props.onAdd }>
             <input className="mb-4" name="name" type="text" placeholder="Enter name"/>
             <input className="mb-4" name="description" type="text" placeholder="Enter description"/>
@@ -20,10 +22,12 @@ class AddForm extends Component {
               <option value="sun"> sun </option>
               <option value="shade"> shade </option>
               <option value="sun and shade"> sun and shade </option>
-            </select> <br/>
+            </select>
+            <br></br>
             <input className="mb-4 smallWidth" name="price" type="number" min="1" placeholder="Price"/> € <br/>
+
             <input className="mb-4" name="plantImage" type="file"/>
-            <button className="btn btn-sm" type="submit"> Add plant </button>
+            <button className="btn btn-sm btn-outline-dark" type="submit" > Add plant </button>
           </form>
         </div>
       </div>

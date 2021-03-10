@@ -25,7 +25,7 @@ function SignUp(props) {
               null
             )
           }
-          <button type="submit" className="btn btn-primary mt-4"> Sign up </button>
+          <button type="submit" className="btn btn-primary mt-4 btn-outline-dark"> Sign up </button>
           <p>Already have an account?</p>
           <Link to={'/signin'}>Sign in</Link>
         </form>
