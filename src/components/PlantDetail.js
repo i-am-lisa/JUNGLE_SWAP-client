@@ -44,16 +44,16 @@ class PlantDetail extends Component {
           <div className="card cardMediumWidth">
             {
               plant.image ? (
-                <img className="card-img-top mediumPicSize" src={plant.image} alt={plant.name} />
+                <img className="card-img-top mediumPicSize" src={ plant.image } alt={ plant.name } />
               ) : (
                 null
               )
             }
-            <div className="ml-2 mt-2"> <span> Name: </span> {plant.name} </div>
-            <div className="ml-2 mt-2"> <span> Description: </span> {plant.description} </div>
-            <div className="ml-2 mt-2"> <span> Size: </span> {plant.size} cm </div>
-            <div className="ml-2 mt-2"> <span> Likes: </span> {plant.location} </div>
-            <div className="ml-2 mt-2"> <span> Price: </span> {plant.price} € </div>
+            <div className="ml-2 mt-2"> <span> Name: </span> { plant.name } </div>
+            <div className="ml-2 mt-2"> <span> Description: </span> { plant.description } </div>
+            <div className="ml-2 mt-2"> <span> Size: </span> { plant.size } cm </div>
+            <div className="ml-2 mt-2"> <span> Likes: </span> { plant.location } </div>
+            <div className="ml-2 mt-2"> <span> Price: </span> { plant.price } € </div>
             <div className="ml-2 mt-2 col justify-content-center">
               <div className="row-2 justify-content-center">
                 <div className="card-body">
@@ -71,10 +71,22 @@ class PlantDetail extends Component {
                       </>
                     ) : (
                       <>
-                        <Link to={{ pathname: `/plant/${plant._id}/checkout`, plant: plant }} >
+                        <Link to={
+                            { 
+                              pathname: `/plant/${plant._id}/checkout`, 
+                              plant: plant 
+                            }
+                        }>
                           <button className="btn btn-sm ml-2 btn-outline-dark"> Buy </button>
                         </Link>
-                        <button className="btn btn-sm ml-2 btn-outline-dark"> Swap </button>
+                        <Link to={
+                          {
+                            pathname: "/request-form",
+                            plant: plant
+                          }
+                        }>
+                          <button className="btn btn-sm ml-2 btn-outline-dark"> Swap </button>                      
+                        </Link>
                       </>
                     )
                   }

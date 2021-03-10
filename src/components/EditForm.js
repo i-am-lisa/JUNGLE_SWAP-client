@@ -28,9 +28,6 @@ class EditForm extends Component {
       );
   }
 
-
-
-
   handleNameChange = (event) => {
     let text = event.target.value;
     let clonePlant = JSON.parse(JSON.stringify(this.state.plant));
@@ -112,8 +109,8 @@ class EditForm extends Component {
   }
 
   render() {
-    const {plant} = this.state;
-    const {onEdit} = this.props;
+    const { plant } = this.state;
+    const { onEdit } = this.props;
     return (
       <div className="container row mt-5 fullscreen">
         <div className="mt-2 col-11 col-md-5 offset-1 offset-md-5">

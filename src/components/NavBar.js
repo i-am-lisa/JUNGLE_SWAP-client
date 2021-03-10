@@ -21,6 +21,7 @@ function NavBar (props) {
                   )}
               </ScrollTo>
             }
+            <Link className="p-2" to="/myrequests"> Messages </Link>
             {
               props.user ? (
                 <Link className="p-2" to="/logout"> Log out </Link>
