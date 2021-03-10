@@ -17,10 +17,11 @@ function NavBar (props) {
             {
               <ScrollTo >
                   {({ scroll }) => (
-                    <Link className="p-2" onClick={() => scroll({y: 820, smooth: true})}>All Plants</Link>
+                    <Link className="p-2" onClick={() => scroll({y: 1700, smooth: true})}>All Plants</Link>
                   )}
               </ScrollTo>
             }
+            <Link className="p-2" to="/myrequests"> Messages </Link>
             {
               props.user ? (
                 <Link className="p-2" to="/logout"> Log out </Link>
