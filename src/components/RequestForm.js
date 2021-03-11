@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom"
 
-=======
->>>>>>> origin/christian-code
 
 class RequestForm extends Component {
   render() {

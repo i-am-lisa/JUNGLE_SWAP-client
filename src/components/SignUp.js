@@ -27,9 +27,8 @@ function SignUp(props) {
             )
           }
           <button type="submit" className="btn btn-primary mt-4 btn-outline-dark"> Sign up </button>
-          <p className="padding">Already have an account?</p> <Link to={'/signin'}>Sign in</Link>
-          
-         
+          <p className="padding"> Already have an account? </p> 
+          <Link to={'/signin'}> Sign in </Link>
         </form>
       </div>
     </div>

@@ -10,11 +10,7 @@ class AddForm extends Component {
     return (
       <div className="container row mt-5 fullscreen">
         <div className="mt-5 col-11 col-md-5 offset-1 offset-md-6">
-<<<<<<< HEAD
-          <h2 className="mt-5 mb-5">Upload a plant</h2>
-=======
           <h2 className="mt-5 mb-5"> Upload a plant </h2>
->>>>>>> origin/christian-code
           <form onSubmit={ this.props.onAdd }>
             <input className="mb-4" name="name" type="text" placeholder="Enter name"/>
             <input className="mb-4" name="description" type="text" placeholder="Enter description"/>
