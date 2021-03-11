@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from  'react-router-dom'
+import {Link} from  "react-router-dom";
 
 function SignUp(props) {
   return (
@@ -20,14 +20,14 @@ function SignUp(props) {
           </div>
           {
             props.error ? (
-              <p style={{ color: "red" }}>{ props.error.errorMessage }</p>
+              <p style={{ color: "red" }}>{ props.error }</p>
             ) : (
               null
             )
           }
           <button type="submit" className="btn btn-primary mt-4 btn-outline-dark"> Sign up </button>
           <p>Already have an account?</p>
-          <Link to={'/signin'}>Sign in</Link>
+          <Link to={ "/signin" } >Sign in </Link>
         </form>
       </div>
     </div>

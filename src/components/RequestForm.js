@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 
 class RequestForm extends Component {
   render() {
-    /*const { user } = this.props
-    if (!user) {
-      return <Redirect to={"/signup"} />
-    }*/
     const { plant } = this.props.location;
     return (
       <div className="container row mt-5">

@@ -35,9 +35,7 @@ class PlantDetail extends Component {
     }
     return (
       <div className="container mt-5 row row-md-10 offset-1 offset-md-4 fullscreen">
-        
         <div className="mt-4 mb-3 pt-4 container">
-        
           <h2> Plant details </h2>
         </div>
         <div className="col">
@@ -60,7 +58,9 @@ class PlantDetail extends Component {
                   {
                     (user._id === plant.creator) ? (
                       <>
-                        <Link to={`/plant/${plant._id}/edit`}> <button className="btn btn-sm ml-2"> Edit </button> </Link>
+                        <Link to={`/plant/${plant._id}/edit`}> 
+                          <button className="btn btn-sm ml-2"> Edit </button> 
+                        </Link>
                         <button className="btn btn-sm ml-2"
                           onClick={
                             () => {
@@ -101,7 +101,6 @@ class PlantDetail extends Component {
       </div>
     );
   }
-
 
 }
 
