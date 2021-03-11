@@ -8,7 +8,7 @@ import config from "./config";
 import axios from "axios";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-import Footer from './components/Footer'
+import Footer from './components/Footer';
 import AddForm from "./components/AddForm";
 import EditForm from "./components/EditForm";
 import PlantDetail from "./components/PlantDetail";
@@ -16,11 +16,7 @@ import CheckoutPage from "./components/CheckoutPage";
 import LogOut from "./components/LogOut";
 import RequestForm from "./components/RequestForm";
 import RequestsPage from "./components/RequestsPage";
-<<<<<<< HEAD
 import NotFound from './components/NotFound';
-=======
-import Footer from "./components/Footer";
->>>>>>> origin/christian-code
 
 class App extends Component {
 
@@ -467,7 +463,6 @@ class App extends Component {
             }
           } />
           <Route path="/myrequests" render={
-<<<<<<< HEAD
               (routeProps) => {
                 return <RequestsPage onMyRequests={ this.handleMyRequests } user={ loggedInUser } requests={ requests } { ...routeProps }/>
               }
@@ -475,12 +470,6 @@ class App extends Component {
           {
            <Route component={NotFound} />
           }
-=======
-            (routeProps) => {
-              return <RequestsPage onMyRequests={this.handleMyRequests} user={loggedInUser} requests={requests} {...routeProps} />
-            }
-          } />
->>>>>>> origin/christian-code
         </Switch>
         <Footer />
       </div>
