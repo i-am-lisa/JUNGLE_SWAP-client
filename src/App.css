@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,700;1,700&family=Source+Sans+Pro:wght@200;300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,700;1,700&family=Source+Sans+Pro:wght@200;300&display=swap");
+
 /* ---------- elements ------------ */ 
 
-html, body {
+html, 
+body {
   background-color: #fbf8ef;
 
   /* Height and width fallback for older browsers. */
@@ -17,12 +19,6 @@ html, body {
   margin: 0;
 }
 
-
-.main{
-  margin:0px;
-  padding: 0px;
-}
-
 nav {
   background: #fbf8efb6;
 }
@@ -32,25 +28,16 @@ a {
 }
 
 a:hover {
-  color:#204d2c;
+  color: #204d2c;
   text-decoration: none;
 } 
 
-.navbar-dark .navbar-brand{
-  font-family: 'Noto Serif', serif;
-  font-size: 20px;
-  color: rgb(65, 93, 250)
-}
-a.navbar-brand:hover{
-  color:#204d2c;
+a.navbar-brand:hover {
+  color: #204d2c;
 }
 
 form input {
   width: 100%;
-}
-
-.form-control{
-margin-bottom:40px;
 }
 
 div input {
@@ -61,36 +48,59 @@ span {
   font-weight: 700;
 }
 
+hr {
+  padding-bottom: 50px;
+  width: 80%;
+}
 
-/* ---------- Lisa's styles ------------ */ 
+form {
+  background:  #fbf8ef;
+  padding: 15px;
+  margin-bottom: 15px;
+}
 
-.intro h5{
-  font-family: 'Source Sans Pro', sans-serif;
+footer {
+  text-align:center;
+  color: rgb(65, 93, 250);
+  background: #fbf8ef9c;
+  padding: 15px 0px;
+}
+
+/* ---------- Lisa"s styles ------------ */ 
+
+.main {
+  margin: 0px;
+  padding: 0px;
+}
+
+.intro h5 {
+  font-family: "Source Sans Pro", sans-serif;
   text-transform: uppercase;
   letter-spacing: 4px;
   font-weight: 600;
-  padding-bottom:50px;
+  padding-bottom: 50px;
 }
 
-.intro h4{
-  font-family: 'Noto Serif', serif;
+.intro h4 {
+  font-family: "Noto Serif", serif;
   font-size: 25px;
 }
-.intro p{
+
+.intro p {
   font-weight:700;
 }
 
-.intro{
+.intro {
   color:#204d2c;
   background-color: #FFCF60;
   padding-top: 50px;
-
 }
 
 /* ------------- own classes -------------- */
-.headerImg{
-  background-image: url('./images/JungleSwap_Header.png');
-  /* background-image: url('./images/ren-ran-bBiuSdck8tU-unsplash.jpg');   */
+
+.headerImg {
+  background-image: url("./images/JungleSwap_Header.png");
+  /* background-image: url("./images/ren-ran-bBiuSdck8tU-unsplash.jpg");   */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -108,42 +118,34 @@ span {
   }
 }
 
-.icon{
+.icon {
   height: 300px;
   margin-left: 80px;
 }
 
-footer{
-  text-align:center;
-  color: rgb(65, 93, 250);
-  background: #fbf8ef9c;
-  padding: 15px 0px;
-}
-
-.footer-row{
-  background-image: url('./images/JungleSwap_Header.png');
+.footer-row {
+  background-image: url("./images/JungleSwap_Header.png");
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 200px;
 }
 
-
 .headerImg h5 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   text-transform: uppercase;
   color: #fbf8ef;
   letter-spacing: 4px;
   font-weight: 600;
 } 
 
-.title{
+.title {
   margin-top: 150px;
 }
 
 
 
 .headerImg h2 {
-  font-family: 'Noto Serif', serif;
+  font-family: "Noto Serif", serif;
   font-size: 60px;
   letter-spacing: 1px;
   padding: 15px;
@@ -157,7 +159,7 @@ footer{
   }
 }
 
-.borderAround{
+.borderAround {
   margin-top: 500px;
 }
 
@@ -181,14 +183,26 @@ footer{
   width: 6rem;
 }
 
+.smallPicSize {
+  object-fit: cover;
+  height: 18rem;
+}
+
+.cardSmallWidth {
+  width: 18rem;
+}
+
 .mediumPicSize {
   object-fit: cover;
-  width: 20rem;
-  height: 20rem;
+  height: 22rem;
+}
+
+.cardMediumWidth {
+  width: 22rem;
 }
 
 .biggerFontSize {
-  font-family: 'Noto Serif', serif;
+  font-family: "Noto Serif", serif;
   font-weight: bold 700;
   font-style: italic;
   letter-spacing: 1px;
@@ -261,6 +275,13 @@ form{
 
 /* ---------------- Bootstrap classes ---------------- */
 
+.navbar-dark 
+.navbar-brand {
+  font-family: "Noto Serif", serif;
+  font-size: 20px;
+  color: rgb(65, 93, 250)
+}
+
 .btn {
   background: white;
   letter-spacing: 1px;
@@ -277,27 +298,21 @@ form{
 
 .form-control {
   /*1px solid black;*/
+  margin-bottom:40px;
   border: none;
   border-radius: 3px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.164);;
 }
 
-.cardSmallWidth {
-  width: 16rem;
-}
-
-.cardMediumWidth {
-  width: 20rem;
-}
-
 .card-body h5{
   font-size: 25px;
   text-align: center;
-  font-family: 'Noto Serif', serif;
+  font-family: "Noto Serif", serif;
   font-weight: 900;
 }
 
 /* -------------- Stripe ------------- */
+
 #card-element {
   /*border: 1px solid black;*/
   background-color: white;
@@ -347,7 +362,3 @@ button:disabled {
   color: #ff474a;
   margin: 0px auto;
 }
-
-
-/*--------mobile-------*/
-

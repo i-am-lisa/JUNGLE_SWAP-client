@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css"
+import "./App.css";
 import { Route, Switch, withRouter } from "react-router-dom";
 import config from "./config";
 import axios from "axios";
@@ -11,12 +11,16 @@ import NavBar from "./components/NavBar";
 import Footer from './components/Footer'
 import AddForm from "./components/AddForm";
 import EditForm from "./components/EditForm";
-import PlantDetail from "./components/PlantDetail"
-import CheckoutPage from "./components/CheckoutPage"
+import PlantDetail from "./components/PlantDetail";
+import CheckoutPage from "./components/CheckoutPage";
 import LogOut from "./components/LogOut";
 import RequestForm from "./components/RequestForm";
 import RequestsPage from "./components/RequestsPage";
+<<<<<<< HEAD
 import NotFound from './components/NotFound';
+=======
+import Footer from "./components/Footer";
+>>>>>>> origin/christian-code
 
 class App extends Component {
 
@@ -29,7 +33,9 @@ class App extends Component {
     fetchingUser: true
   }
 
-  // ------------Fetch initial data to be displayed---------------
+
+  // ------------ Fetch initial data to be displayed ---------------
+
   componentDidMount() {
     this.fetchAllPlants()
     if (!this.state.loggedInUser) {
@@ -46,13 +52,11 @@ class App extends Component {
         )
         .catch(
           (err) => {
-
             this.setState(
               {
                 fetchingUser: false
               }
             );
-
             console.log("Initializing fetching failed", err);
           }
         );
@@ -65,7 +69,7 @@ class App extends Component {
         (response) => {
           this.setState(
             {
-              plants: response.data 
+              plants: response.data
             }
           );
         }
@@ -74,12 +78,12 @@ class App extends Component {
         (err) => {
           console.log("Fetching plants failed", err);
         }
-      )
+      );
   }
 
 
   //--------------- Search form ---------------------------
-  
+
   fetchQueryPlants = () => {
     axios.get(`${config.API_URL}/api/plants/search?q=${this.state.query}`)
       .then(
@@ -102,28 +106,24 @@ class App extends Component {
   handleChange = (event) => {
     const query = event.target.value;
     this.setState(
-      { query }, 
+      { query },
       () => {
-        query ? ( 
+        query ? (
           this.fetchQueryPlants()
-         ) : (
-           this.fetchAllPlants()
-         )
+        ) : (
+          this.fetchAllPlants()
+        )
       }
     );
   }
 
 
-  //------------Add Form------------------
+  //------------ Add Form ------------------
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let name = event.target.name.value;
-    let description = event.target.description.value;
-    let size = event.target.size.value;
-    let price = event.target.price.value;
-    let image = event.target.plantImage.files[0];
-    let location = event.target.location.value;
+    const {name, description, size, price, plantImage, location} = event.target;
+    let image = plantImage.files[0];
     let uploadForm = new FormData();
     uploadForm.append("imageUrl", image);
     axios.post(`${config.API_URL}/api/upload`, uploadForm)
@@ -131,12 +131,12 @@ class App extends Component {
         (response) => {
           //1. Make an API call to the server side Route to create a new plant
           const newPlant = {
-            name: name,
-            description: description,
-            size: size,
-            price: price,
+            name: name.value,
+            description: description.value,
+            size: size.value,
+            price: price.value,
             image: response.data.image,
-            location: location
+            location: location.value
           };
           axios.post(`${config.API_URL}/api/plants/create`, newPlant, { withCredentials: true })
             .then(
@@ -145,7 +145,7 @@ class App extends Component {
                 this.setState(
                   {
                     plants: [response.data, ...this.state.plants]
-                  }, 
+                  },
                   () => {
                     // 3. Once the state is update, redirect the user to the home page
                     this.props.history.push("/");
@@ -168,16 +168,17 @@ class App extends Component {
   }
 
 
-  //------------Edit Plant------------------
+  //------------ Edit Plant ------------------
 
   handleEditPlant = (plant) => {
+    const {name, description, size, price, image, location} = plant;
     const editedPlant = {
-      name: plant.name,
-      description: plant.description,
-      size: plant.size,
-      price: plant.price,
-      image: plant.image,
-      location: plant.location
+      name: name,
+      description: description,
+      size: size,
+      price: price,
+      image: image,
+      location: location
     };
     axios.patch(`${config.API_URL}/api/plants/${plant._id}`, editedPlant)
       .then(
@@ -185,12 +186,13 @@ class App extends Component {
           let newPlants = this.state.plants.map(
             (singlePlant) => {
               if (plant._id === singlePlant._id) {
-                  singlePlant.name = plant.name
-                  singlePlant.description = plant.description
-                  singlePlant.size = plant.size
-                  singlePlant.price = plant.price
-                  singlePlant.image = plant.image
-                  singlePlant.location = plant.location
+                const { name, description, size, price, image, location } = plant;
+                singlePlant.name = name;
+                singlePlant.description = description;
+                singlePlant.size = size;
+                singlePlant.price = price;
+                singlePlant.image = image;
+                singlePlant.location = location;
               }
               return singlePlant;
             }
@@ -198,11 +200,11 @@ class App extends Component {
           this.setState(
             {
               plants: newPlants
-            }, 
+            },
             () => {
               this.props.history.push("/");
             }
-          )
+          );
         }
       )
       .catch(
@@ -213,7 +215,7 @@ class App extends Component {
   }
 
 
-  //--------------Delete Plant------------------
+  //-------------- Delete Plant ------------------
 
   handleDelete = (plantId) => {
     //1. Make an API call to the server side Route to delete that specific plant
@@ -229,11 +231,11 @@ class App extends Component {
           this.setState(
             {
               plants: filteredPlants
-            }, 
+            },
             () => {
               this.props.history.push("/");
             }
-          )
+          );
         }
       )
       .catch(
@@ -244,14 +246,15 @@ class App extends Component {
   }
 
 
-  // ---------------- Authentication---------------------
+  // ---------------- Authentication ---------------------
 
   handleSignUp = (event) => {
     event.preventDefault();
+    const { username, email, password } = event.target;
     let user = {
-      username: event.target.username.value,
-      email: event.target.email.value,
-      password: event.target.password.value
+      username: username.value,
+      email: email.value,
+      password: password.value
     };
     axios.post(`${config.API_URL}/api/signup`, user)
       .then(
@@ -259,18 +262,18 @@ class App extends Component {
           this.setState(
             {
               loggedInUser: response.data
-            }, 
+            },
             () => {
               this.props.history.push("/");
             }
-          )
+          );
         }
       )
       .catch(
         (err) => {
           this.setState(
             {
-              error: err.data
+              error: err.response.data.errorMessage
             }
           );
         }
@@ -289,11 +292,11 @@ class App extends Component {
           this.setState(
             {
               loggedInUser: response.data
-            }, 
+            },
             () => {
               this.props.history.push("/");
             }
-          )
+          );
         }
       )
       .catch(
@@ -310,7 +313,7 @@ class App extends Component {
           this.setState(
             {
               loggedInUser: null
-            }, 
+            },
             () => {
               this.props.history.push("/");
             }
@@ -325,7 +328,7 @@ class App extends Component {
   }
 
 
-  // --------------------Payment-----------------------
+  // -------------------- Payment -----------------------
 
   handleCheckout = () => {
     axios.post(`${config.API_URL}/api/create-payment-intent`, {}, { withCredentials: true })
@@ -345,8 +348,9 @@ class App extends Component {
       );
   }
 
+
   // ------------------------- Request Form --------------------
-  
+
   handleRequestSubmit = (event, plant) => {
     event.preventDefault();
     //console.log("PLANT:", plant);
@@ -356,7 +360,7 @@ class App extends Component {
     const request = {
       buyer: user._id,
       seller: plant.creator,
-      plant: plant,    // plant._id,
+      plant: plant,
       message: message
     };
     axios.post(`${config.API_URL}/api/plants/request`, request, { withCredentials: true })
@@ -366,7 +370,7 @@ class App extends Component {
           this.setState(
             {
               requests: [response.data, ...this.state.requests]
-            }, 
+            },
             () => {
               // 3. Once the state is update, redirect the user to the home page
               this.props.history.push("/");
@@ -381,16 +385,17 @@ class App extends Component {
       );
   }
 
- // ----------------- My requests ---------------------
+
+  // ----------------- My requests ---------------------
+
   handleMyRequests = () => {
-    
     axios.get(`${config.API_URL}/api/myrequests`)
       .then(
         (response) => {
           console.log("Response -- handleMyRequests():", response.data);
           this.setState(
             {
-              requests: response.data 
+              requests: response.data
             }
           );
         }
@@ -401,8 +406,10 @@ class App extends Component {
         }
       );
   }
-  
-  // --------------Render------------------
+
+
+  // -------------- Render ------------------
+
   render() {
     const { plants, loggedInUser, error, query, requests } = this.state;
     if (this.state.fetchingUser) {
@@ -412,54 +419,55 @@ class App extends Component {
     }
     return (
       <div class="main">
-        <NavBar onLogOut={ this.handleLogOut } user={ loggedInUser }/>
+        <NavBar onLogOut={this.handleLogOut} user={loggedInUser}/>
         <Switch>
           <Route exact path="/" render={
             () => {
-              return <Home onSearch={ this.handleChange } plants={ plants } query={ query }/>
+              return <Home onSearch={this.handleChange} plants={plants} query={query} />
             }
-            }/>
+          } />
           <Route path="/plants/:plantId" render={
             (routeProps) => {
-              return <PlantDetail onDelete={ this.handleDelete } user={ loggedInUser } { ...routeProps }/>
+              return <PlantDetail onDelete={this.handleDelete} user={loggedInUser} {...routeProps} />
             }
-          }/>
+          } />
           <Route path="/signin" render={
             (routeProps) => {
-              return <SignIn onSignIn={ this.handleSignIn } { ...routeProps }/>
+              return <SignIn onSignIn={this.handleSignIn} {...routeProps} />
             }
-          }/>
+          } />
           <Route path="/signup" render={
             (routeProps) => {
-              return <SignUp onSignUp={ this.handleSignUp } error={ error } { ...routeProps }/>
+              return <SignUp onSignUp={this.handleSignUp} error={error} {...routeProps} />
             }
-          }/>
+          } />
           <Route path="/logout" render={
             (routeProps) => {
-              return <LogOut onLogOut={ this.handleLogOut } { ...routeProps }/>
+              return <LogOut onLogOut={this.handleLogOut} {...routeProps} />
             }
-          }/>
+          } />
           <Route path="/add-form" render={
             () => {
-              return <AddForm onAdd={ this.handleSubmit} user={ loggedInUser }/>
+              return <AddForm onAdd={this.handleSubmit} user={loggedInUser} />
             }
-          }/>
+          } />
           <Route path="/plant/:plantId/edit" render={
-              (routeProps) => {
-                return <EditForm onEdit={ this.handleEditPlant } { ...routeProps }/>
-              }
-          }/>
+            (routeProps) => {
+              return <EditForm onEdit={this.handleEditPlant} {...routeProps} />
+            }
+          } />
           <Route path="/plant/:plantId/checkout" render={
             (routeProps) => {
-              return <CheckoutPage onCheckout={ this.handleCheckout } { ...routeProps }/>
+              return <CheckoutPage onCheckout={this.handleCheckout} {...routeProps} />
             }
-          }/> 
+          } />
           <Route path="/request-form" render={
             (routeProps) => {
-              return <RequestForm onRequest={ this.handleRequestSubmit } user={ loggedInUser } { ...routeProps }/>
+              return <RequestForm onRequest={this.handleRequestSubmit} user={loggedInUser} {...routeProps} />
             }
-          }/> 
+          } />
           <Route path="/myrequests" render={
+<<<<<<< HEAD
               (routeProps) => {
                 return <RequestsPage onMyRequests={ this.handleMyRequests } user={ loggedInUser } requests={ requests } { ...routeProps }/>
               }
@@ -467,8 +475,14 @@ class App extends Component {
           {
            <Route component={NotFound} />
           }
+=======
+            (routeProps) => {
+              return <RequestsPage onMyRequests={this.handleMyRequests} user={loggedInUser} requests={requests} {...routeProps} />
+            }
+          } />
+>>>>>>> origin/christian-code
         </Switch>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

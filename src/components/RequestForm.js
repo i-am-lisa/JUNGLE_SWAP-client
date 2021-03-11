@@ -1,14 +1,13 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom"
 
+=======
+>>>>>>> origin/christian-code
 
 class RequestForm extends Component {
   render() {
-    /*const { user } = this.props
-    if (!user) {
-      return <Redirect to={"/signup"} />
-    }*/
     const { plant } = this.props.location;
     return (
       <div className="container row mt-5">

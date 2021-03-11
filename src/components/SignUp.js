@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from  'react-router-dom'
+import {Link} from  "react-router-dom";
 
 function SignUp(props) {
   return (
@@ -21,7 +21,7 @@ function SignUp(props) {
           </div>
           {
             props.error ? (
-              <p style={{ color: "red" }}>{ props.error.errorMessage }</p>
+              <p style={{ color: "red" }}>{ props.error }</p>
             ) : (
               null
             )

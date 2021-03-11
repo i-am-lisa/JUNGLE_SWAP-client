@@ -69,7 +69,7 @@ class EditForm extends Component {
       {
         plant: clonePlant
       }
-    )
+    );
   }
 
   handleLocationChange = (event) => {
@@ -82,7 +82,6 @@ class EditForm extends Component {
       }
     );
   }
-
 
   handleImageChange = (event) => {
     let image = event.target.files[0];

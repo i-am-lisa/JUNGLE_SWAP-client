@@ -37,7 +37,6 @@ class PlantDetail extends Component {
       <div className="container mt-5 row row-md-10 offset-md-4">
         
         <div className="mt-4 mb-3 pt-4 container">
-        
           <h2> Plant details </h2>
         </div>
         <div className="col">
@@ -101,7 +100,6 @@ class PlantDetail extends Component {
       </div>
     );
   }
-
 
 }
 
