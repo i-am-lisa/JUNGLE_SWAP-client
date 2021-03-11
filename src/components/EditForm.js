@@ -112,7 +112,7 @@ class EditForm extends Component {
     const { plant } = this.state;
     const { onEdit } = this.props;
     return (
-      <div className="container row mt-5 fullscreen">
+      <div className="container row mt-5 ">
         <div className="mt-2 col-11 col-md-5 offset-1 offset-md-5">
           <h2 className="mt-5 mb-4"> Edit your plant </h2>
           <div className="card cardSmallWidth mb-5">
@@ -131,7 +131,7 @@ class EditForm extends Component {
               <div className="row justify-content-around">
                 <button className="btn btn-sm btn-outline-dark" onClick={ () => { onEdit(plant) } }  > Save changes </button>
                 <Link to={ `/plants/${plant._id}` }> 
-                  <button className="btn btn-sm mx-2 btn-outline-dark"> Go back </button> 
+                  <button className="btn btn-sm mx-2"> Go back </button> 
                 </Link>
               </div>
             </div>

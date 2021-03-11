@@ -16,6 +16,7 @@ import CheckoutPage from "./components/CheckoutPage"
 import LogOut from "./components/LogOut";
 import RequestForm from "./components/RequestForm";
 import RequestsPage from "./components/RequestsPage";
+import NotFound from './components/NotFound';
 
 class App extends Component {
 
@@ -463,6 +464,9 @@ class App extends Component {
                 return <RequestsPage onMyRequests={ this.handleMyRequests } user={ loggedInUser } requests={ requests } { ...routeProps }/>
               }
           }/>
+          {
+           <Route component={NotFound} />
+          }
         </Switch>
         <Footer/>
       </div>

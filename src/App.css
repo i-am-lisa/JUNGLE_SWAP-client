@@ -11,8 +11,7 @@ html, body {
   /* Set the height to match that of the viewport. */
   height: 100vh;
 
-  /* Set the width to match that of the viewport. */
-  width: 100vw;
+
 
   /* Remove any browser-default margins. */
   margin: 0;
@@ -99,7 +98,14 @@ span {
 }
 
 .image{
-  height: 600px;
+  width: 30rem;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 768px) {
+  .image{
+   width: 21rem;
+  }
 }
 
 .icon{
@@ -134,25 +140,42 @@ footer{
   margin-top: 150px;
 }
 
+
+
 .headerImg h2 {
   font-family: 'Noto Serif', serif;
   font-size: 60px;
   letter-spacing: 1px;
-  /* border: solid #fbf8ef 4px; */
   padding: 15px;
   color: #fbf8ef;
+  text-align: center;
+}
+@media only screen and (max-width: 768px) {
+  .headerImg h2 {
+    font-size: 40px;
+    margin-left: -45px;
+  }
 }
 
 .borderAround{
   margin-top: 500px;
 }
 
+.padding{
+  padding-top: 20px;
+}
+
 .container h2{
+  color:#204d2c;
   font-family: 'Noto Serif', serif;
   font-size: 60px;
-  text-align: center;
   letter-spacing: -1px;
 }
+
+.container{
+  margin-bottom: 80px;
+}
+
 
 .miniPicSize {
   width: 6rem;
@@ -174,6 +197,13 @@ footer{
   padding: 10px 50px;
 }
 
+@media only screen and (max-width: 768px) {
+  .biggerFontSize {
+    font-size: 1rem;
+   
+  }
+}
+
 .smallWidth {
   width: 30%;
 }
@@ -183,9 +213,8 @@ hr{
   width: 80%;
 }
 
-.fullscreen{
-  height:80vh;
-  padding:5vh 0px 20vh 0px;
+.navbar-toggler{  
+  background: rgb(65, 93, 250);
 }
 
 form{
@@ -194,18 +223,54 @@ form{
   margin-bottom: 15px;
 }
 
+.notFound{
+  text-shadow: 5px black;
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /*centers items on the line (the x-axis by default)*/
+  align-items: center; /*centers items on the cross-axis (y by default)*/
+  color: #fbf8ef;
+  background-image: url('./images/JungleSwap_Lost.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.notFound h3{
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+  color: #fbf8ef;
+  letter-spacing: 4px;
+  font-weight: 600;
+  padding-top: 50px;
+  padding-bottom: 0px;
+}
+
+.notFound h2{
+  font-family: 'Noto Serif', serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  padding: 0px 10px;
+}
+
+
+
 /* ---------------- Bootstrap classes ---------------- */
 
 .btn {
-  background:  #fbf8ef;
-  letter-spacing: 1px;;
+  background: white;
+  letter-spacing: 1px;
   margin-top:20px;
   border-radius: 0px;
 }
 
 .btn:hover {
   
-  background:  white;
+  background: #fbf8ef;
   color: black;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.164);
 }
@@ -282,4 +347,7 @@ button:disabled {
   color: #ff474a;
   margin: 0px auto;
 }
+
+
+/*--------mobile-------*/
 
