@@ -249,9 +249,10 @@ class App extends Component {
     const { username, email, password } = event.target;
     let user = {
       username: username.value,
-      email: email.value,
+      email: email.value.toLowerCase(),
       password: password.value
     };
+    
     axios.post(`${config.API_URL}/api/signup`, user)
       .then(
         (response) => {
@@ -260,7 +261,7 @@ class App extends Component {
               loggedInUser: response.data
             },
             () => {
-              this.props.history.push("/");
+              this.props.history.push("/signin");
             }
           );
         }
