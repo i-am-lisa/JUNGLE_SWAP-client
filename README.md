@@ -174,17 +174,8 @@ user
 
 
 ### Git
+Link to client repository: https://github.com/i-am-lisa/JUNGLE_SWAP-client
+Link to server repository: https://github.com/i-am-lisa/JUNGLE_SWAP-server
 
-The url to your repository and to your deployed project
-
-[Client repository Link](#)
-
-[Server repository Link](#)
-
-[Deployed App Link](#)
-
-### Slides
-
-The url to your presentation slides
-
-[Slides Link](#)
+### Deployed App
+Deployed App: https://jungle-swap.herokuapp.com/
